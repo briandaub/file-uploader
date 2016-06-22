@@ -29,8 +29,14 @@ function scanForSequences(event) {
             
             for(var i = 0; i < contentsByLine.length; i++){
                 arrayOfLines.push(contentsByLine);
-                if(arrayOfLines[i] == '>'){
+                console.log(arrayOfLines[i]);
+                if(arrayOfLines[i].charAt(i) == '>'){
                     obj['id'] = arrayOfLines[i];
+                    if(arrayOfLines[i] == sequence){
+                        obj['sequence'] == arrayOfLines[i];
+                        obj['lead_trim'] == document.getElementById('lead_trim').value();
+                        obj['trail_trim'] == document.getElementById('trail_trim').value();
+                    }
                     console.log(obj);
                 }
             }
