@@ -29,9 +29,8 @@ function scanForSequences(event) {
             
             for(var i = 0; i < contentsByLine.length; i++){
                 arrayOfLines.push(contentsByLine);
-                console.log(arrayOfLines[i]);
-                if(arrayOfLines[i] == sequence_id){
-                    obj[i] = arrayOfLines[i];
+                if(arrayOfLines[i] == '>'){
+                    obj['id'] = arrayOfLines[i];
                     console.log(obj);
                 }
             }
