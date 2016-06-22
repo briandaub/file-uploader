@@ -9,6 +9,9 @@ function scanForSequences(event) {
     //Get the file from HTML input tag
     var file = event.target.files[0];
     var output = document.getElementById('table');
+    //Checks text file for matching string, *****REMEMBER TO REPLACE n{X} with correct length of sequence_id
+    var sequence_id = />^n[0-9 a-z]\rn{6}/;
+    var sequence = /[A, C, T, G]/;
     
     //If file has been uploaded
     if(file) {
@@ -21,11 +24,9 @@ function scanForSequences(event) {
             //Alert user the file upload has succeeded
             alert('File ' + file.name + ' has been uploaded!');
             
-            var array = [];
+            
             for(var i = 0; i < contents.length; i++){
-                if(contents.charAt(i) == ">" && contents.charAt(i) == )
-                array.push(contents.charAt(i));
-                console.log(array);
+
             }
         }
         //Parse the file as text
