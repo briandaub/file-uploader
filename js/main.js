@@ -15,8 +15,11 @@ function scanForSequences(event) {
     
     //If file has been uploaded
     if(file) {
-        var arrayOfLines = [];
+        var sequenceArray = [];
+        var objArray = [];
         var obj = {};
+        var str = '';
+        var subStr = '';
         //Create a new file reader
         var reader = new FileReader();
         //When the file reader loads
@@ -27,15 +30,18 @@ function scanForSequences(event) {
             alert('File ' + file.name + ' has been uploaded!');
             
             for(var i = 0; i < contentsByLine.length; i++){
-                if(sequence.exec(contentsByLine[i])){
+                if(contentsByLine[i].charAt(i) == '>'){
                     obj['id'] = contentsByLine[i];
                 }else{
+                    sequenceArray.push(contentsByLine[i]);
+                    str = sequenceArray.toString();
+                    subStr += str.substring(0, 60) + '\n';
+                    str = str.substring(60);
                     //Need to add all lines of sequence to one string and add that string to obj 'sequence' name as its value
-                    obj['sequence'] = contentsByLine[i];
+                    obj['sequence'] = subStr;
                     /*obj['lead_trim'] = document.getElementById('lead_trim').value();
                     obj['trail_trim'] = document.getElementById('trail_trim').value();*/
                 }
-                console.log(obj);
             }
             
         }
@@ -45,6 +51,7 @@ function scanForSequences(event) {
         //If the file upload has failed, alert the user
         alert('Failed to upload file!');
     }
+    console.log(obj);
 }
     
 document.getElementById('fileItem').addEventListener('change', scanForSequences, false);
