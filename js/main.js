@@ -11,12 +11,15 @@ function scanForSequences(event) {
     var output = document.getElementById('table');
     //Checks text file for matching string, *****REMEMBER TO REPLACE n{X} with correct length of sequence_id
     var sequence_id = />^n[0-9 a-z]\rn{6}/;
-    var sequence = /[A, C, T, G]/;
+    var sequence = /ACTG/;
     
     //If file has been uploaded
     if(file) {
-        var arrayOfLines = [];
+        var sequenceArray = [];
+        var objArray = [];
         var obj = {};
+        var str = '';
+        var subStr = '';
         //Create a new file reader
         var reader = new FileReader();
         //When the file reader loads
@@ -26,13 +29,18 @@ function scanForSequences(event) {
             //Alert user the file upload has succeeded
             alert('File ' + file.name + ' has been uploaded!');
             
-            
             for(var i = 0; i < contentsByLine.length; i++){
-                arrayOfLines.push(contentsByLine);
-                console.log(arrayOfLines[i]);
-                if(arrayOfLines[i] == sequence_id){
-                    obj[i] = arrayOfLines[i];
-                    console.log(obj);
+                if(contentsByLine[i].charAt(i) == '>'){
+                    obj['id'] = contentsByLine[i];
+                }else{
+                    sequenceArray.push(contentsByLine[i]);
+                    str = sequenceArray.toString();
+                    subStr += str.substring(0, 60) + '\n';
+                    str = str.substring(60);
+                    //Need to add all lines of sequence to one string and add that string to obj 'sequence' name as its value
+                    obj['sequence'] = subStr;
+                    /*obj['lead_trim'] = document.getElementById('lead_trim').value();
+                    obj['trail_trim'] = document.getElementById('trail_trim').value();*/
                 }
             }
             
@@ -43,6 +51,7 @@ function scanForSequences(event) {
         //If the file upload has failed, alert the user
         alert('Failed to upload file!');
     }
+    console.log(obj);
 }
     
 document.getElementById('fileItem').addEventListener('change', scanForSequences, false);
