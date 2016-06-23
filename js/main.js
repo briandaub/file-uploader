@@ -9,9 +9,7 @@ function scanForSequences(event) {
     //Get the file from HTML input tag
     var file = event.target.files[0];
     var output = document.getElementById('table');
-    //Checks text file for matching string, *****REMEMBER TO REPLACE n{X} with correct length of sequence_id
     
-    //If file has been uploaded
     if(file) {
         var sequenceArray = [];
         var objArray = [];
@@ -44,10 +42,8 @@ function scanForSequences(event) {
             }
             
         }
-        //Parse the file as text
         reader.readAsText(file);
     } else {
-        //If the file upload has failed, alert the user
         alert('Failed to upload file!');
     }
     console.log(obj);
