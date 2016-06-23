@@ -9,13 +9,15 @@ function scanForSequences(event) {
     //Get the file from HTML input tag
     var file = event.target.files[0];
     var output = document.getElementById('table');
+    var tr = document.createElement('tr');
+    var td = document.createElement('td');
     
     if(file) {
         var sequenceArray = [];
         var objArray = [];
         var obj = {};
-        var str = '';
-        var subStr = '';
+        
+        
         //Create a new file reader
         var reader = new FileReader();
         //When the file reader loads
@@ -27,18 +29,16 @@ function scanForSequences(event) {
             
             for(var i = 0; i < contentsByLine.length; i++){
                 if(contentsByLine[i].charAt(i) == '>'){
-                    obj['id'] = contentsByLine[i];
+                    obj.id = contentsByLine[i];
                 }else{
                     sequenceArray.push(contentsByLine[i]);
-                    str = sequenceArray.toString();
-                    subStr += str.substring(0, 60) + '\n';
-                    str = str.substring(60);
-                    obj['sequence'] = subStr;
-                    obj['lead_trim'] = 0;
-                    obj['trail_trim'] = 0;
+                    obj.sequence = sequenceArray;
+                    obj.lead_trim = 0;
+                    obj.trail_trim = 0;
                 }
-                objArray.push(obj);
+                objArray.push({obj});
                 console.log(objArray);
+                //console.log(sequenceArray[i].length);
             }
             
         }
@@ -46,7 +46,6 @@ function scanForSequences(event) {
     } else {
         alert('Failed to upload file!');
     }
-    console.log(obj);
 }
     
 document.getElementById('fileItem').addEventListener('change', scanForSequences, false);
