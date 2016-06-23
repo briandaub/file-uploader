@@ -25,24 +25,14 @@ function scanForSequences(event) {
             var contentsByLine = evt.target.result.split('\n');
             //Alert user the file upload has succeeded
             alert('File ' + file.name + ' has been uploaded!');
-            var i = 0;
-            while(contentsByLine[i] != sequence && i < contentsByLine.length){
-                obj['id'] = contentsByLine[i];
-                console.log(obj);
-                i++;
-            }
             
             for(var i = 0; i < contentsByLine.length; i++){
-                arrayOfLines.push(contentsByLine);
-                console.log(arrayOfLines[i]);
-                if(contentsByLine.charAt(i) == '>'){
+                if(contentsByLine[i] != sequence){
                     obj['id'] = contentsByLine[i];
-                    if(arrayOfLines[i] == sequence){
-                        obj['sequence'] == arrayOfLines[i];
-                        obj['lead_trim'] == document.getElementById('lead_trim').value();
-                        obj['trail_trim'] == document.getElementById('trail_trim').value();
-                    }
-                    console.log(obj);
+                }else{
+                    obj['sequence'] = contentsByLine[i];
+                    obj['lead_trim'] = document.getElementById('lead_trim').value();
+                    obj['trail_trim'] = document.getElementById('trail_trim').value();
                 }
             }
             
