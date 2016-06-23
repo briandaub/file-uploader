@@ -10,8 +10,6 @@ function scanForSequences(event) {
     var file = event.target.files[0];
     var output = document.getElementById('table');
     //Checks text file for matching string, *****REMEMBER TO REPLACE n{X} with correct length of sequence_id
-    var sequence_id = />^n[0-9 a-z]\rn{6}/;
-    var sequence = /ACTG/;
     
     //If file has been uploaded
     if(file) {
@@ -37,11 +35,12 @@ function scanForSequences(event) {
                     str = sequenceArray.toString();
                     subStr += str.substring(0, 60) + '\n';
                     str = str.substring(60);
-                    //Need to add all lines of sequence to one string and add that string to obj 'sequence' name as its value
                     obj['sequence'] = subStr;
-                    /*obj['lead_trim'] = document.getElementById('lead_trim').value();
-                    obj['trail_trim'] = document.getElementById('trail_trim').value();*/
+                    obj['lead_trim'] = 0;
+                    obj['trail_trim'] = 0;
                 }
+                objArray.push(obj);
+                console.log(objArray);
             }
             
         }
