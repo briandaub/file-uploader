@@ -11,7 +11,7 @@ function scanForSequences(event) {
     var output = document.getElementById('table');
     //Checks text file for matching string, *****REMEMBER TO REPLACE n{X} with correct length of sequence_id
     var sequence_id = />^n[0-9 a-z]\rn{6}/;
-    var sequence = /[A, C, T, G]/;
+    var sequence = /ACTG/;
     
     //If file has been uploaded
     if(file) {
@@ -27,13 +27,14 @@ function scanForSequences(event) {
             alert('File ' + file.name + ' has been uploaded!');
             
             for(var i = 0; i < contentsByLine.length; i++){
-                if(contentsByLine[i] != sequence){
+                if(sequence.exec(contentsByLine)){
                     obj['id'] = contentsByLine[i];
                 }else{
                     obj['sequence'] = contentsByLine[i];
                     obj['lead_trim'] = document.getElementById('lead_trim').value();
                     obj['trail_trim'] = document.getElementById('trail_trim').value();
                 }
+                console.log(obj);
             }
             
         }
