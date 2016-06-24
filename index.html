@@ -17,17 +17,13 @@
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
     <body>
-    <h1>File Uploader</h1>
     <div class="container">
-        
+        <h1>File Uploader</h1>
         
         <input id="fileItem" type="file">
         
         <div>
             <div class="grid-header" style="width: 100%">
-                <label>Sequence Table</label>
-                <span style="float:right" class="ui-icon ui-icon-search" title="Toggle search panel"
-            onclick="toggleFilterRow()"></span>
             </div><!-- /end .grid-header -->
             <div id="table"></div><!-- /end #table -->
             <div id="pager" style="width: 100%; height: 20px;"></div>
@@ -35,8 +31,7 @@
 
         
         <!-- jQuery Include -->
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+        <script   src="https://code.jquery.com/jquery-3.0.0.min.js"   integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0="   crossorigin="anonymous"></script>
 
         <script src="js/main.js"></script>
         
@@ -53,14 +48,14 @@
         <script src="js/slick.dataview.js"></script>
         <script src="controls/slick.pager.js"></script>
         <script src="controls/slick.columnpicker.js"></script>
+        <script src="js/slick.custom.js"></script>
         <script>
-            var dataView;
             var grid;
             var columns = [
-              {id: "sel", name: "#", field: "num", behavior: "select", cssClass: "cell-selection", width: 40, cannotTriggerInsert: true, resizable: false, selectable: false },
-              {id: "sequence", name: "Sequence", field: "Sequence", width: 120, minWidth: 120, cssClass: "cell-title", editor: Slick.Editors.Text, validator: requiredFieldValidator, sortable: true},
-              {id: "lead_trim", name: "Leading Trim", field: "Leading Trim", editor: Slick.Editors.Text, sortable: true},
-              {id: "trail_trim", name: "Trailing Trim", field: "Trailing Trim", editor: Slick.Editors.Text, sortable: true},
+              {id: "sel", name: "#", field: "num", behavior: "select", cssClass: "cell-selection", width: 100, cannotTriggerInsert: true, resizable: false, selectable: false },
+              {id: "sequence", name: "Sequence", field: "sequence", width: 680, minWidth: 680, cssClass: "cell-title", editor: Slick.Editors.Text, /*validator: requiredFieldValidator,*/ sortable: true},
+              {id: "lead_trim", name: "Leading Trim", field: "Leading Trim", width: 250, minWidth: 250, editor: Slick.Editors.Text, sortable: true},
+              {id: "trail_trim", name: "Trailing Trim", field: "Trailing Trim", width: 250, minWidth: 250, editor: Slick.Editors.Text, sortable: true},
             ];
 
             var options = {
@@ -70,42 +65,7 @@
               asyncEditorLoading: true,
               forceFitColumns: false,
               topPanelHeight: 45
-            };
-            
-            var rows = [];
-            
-            $(function(){
-                var data = [];
-                for(var i in objArray){
-                    data[i].push(objArray[i]);
-                }
-                
-                data.getItemMetadata = function (row) {
-                    if(row % 2 === 1){
-                        return {
-                            "columns": {
-                                "sequence": {
-                                    "colspan": 5
-                                }
-                            }
-                        };
-                    }else{
-                        return {
-                            "columns": {
-                                0: {
-                                    "colspan": "*"
-                                }
-                            }
-                        };
-                    }
-                };
-                grid = new Slick.Grid("#table", rows, columns, options);
-                
-                grid.setSelectionModel(new Slick.CellSelectionModel());
-            })
-            
-            
-
+            };  
         </script>
     </div><!-- /end .container -->
     </body>

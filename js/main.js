@@ -36,15 +36,47 @@ function parse(event) {
                     obj.sequence.push(contentsByLine[i]);
                 }
             }
-            console.log(objArray);
+            //console.log(objArray);
         }
         reader.readAsText(file);
     } else {
         alert('Failed to upload file!');
     }
+    
+    
+    // Create the DataView.
+    var dataView = new Slick.Data.DataView();
+    
+    // Pass it as a data provider to SlickGrid.
+    var grid = new Slick.Grid("#table", dataView, columns, options);
+
+    // Make the grid respond to DataView change events.
+    dataView.onRowCountChanged.subscribe(function (e, args) {
+      grid.updateRowCount();
+      grid.render();
+    });
+
+    dataView.onRowsChanged.subscribe(function (e, args) {
+      grid.invalidateRows(args.rows);
+      grid.render();
+    });
+
+    var data = [];
+    for(var i = 0; i < 10; i++){
+        data[i] = {
+            sel: i,
+            sequence: "some info",
+            lead_trim: 0,
+            trail_trim: 0
+        };
+    }
+    
+    dataView.setItems(data);
+    
+    console.log(objArray.length);
+    
 }
     
 document.getElementById('fileItem').addEventListener('change', parse, false);
 
-console.log(objArray);
  
