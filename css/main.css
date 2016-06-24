@@ -62,30 +62,10 @@ textarea {
     margin: 0 auto;
 }
 
-#table {
-    margin: 20px 0 0 0;
+div {
+    width: 100%;
+    height: 600px;
 }
-
-th {
-    border-bottom: 1px solid gray;
-}
-
-td {
-    width: 400px;
-    border-right: 1px solid gray;
-    background: #ccc;
-    text-align: center;
-}
-
-
-
-
-
-
-
-
-
-
 
 
 
