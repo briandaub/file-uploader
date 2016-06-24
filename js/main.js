@@ -5,17 +5,14 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
   alert('The File APIs are not fully supported in this browser.');
 }
 
-function scanForSequences(event) {
+var objArray = [];
+var obj;
+
+function parse(event) {
     //Get the file from HTML input tag
     var file = event.target.files[0];
-    var output = document.getElementById('table');
-    var tr = document.createElement('tr');
-    var td = document.createElement('td');
-    
+
     if(file) {
-        var objArray = [];
-        var obj;
-        
         
         //Create a new file reader
         var reader = new FileReader();
@@ -47,5 +44,7 @@ function scanForSequences(event) {
     }
 }
     
-document.getElementById('fileItem').addEventListener('change', scanForSequences, false);
+document.getElementById('fileItem').addEventListener('change', parse, false);
+
+console.log(objArray);
  
