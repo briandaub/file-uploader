@@ -62,7 +62,7 @@ function parse(event) {
     });
 
     var data = [];
-    for(var i = 0; i < 10; i++){
+    for(var i = 0; i < objArray.length; i++){
         data[i] = {
             sel: i,
             sequence: "some info",
