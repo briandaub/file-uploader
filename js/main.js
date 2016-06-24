@@ -33,11 +33,11 @@ function scanForSequences(event) {
                         sequence: [],
                         lead_trim: 0,
                         trail_trim: 0
-                    }
+                    };
+                    objArray.push(obj);
                 }else{
                     obj.sequence.push(contentsByLine[i]);
                 }
-                objArray.push(obj);
             }
             console.log(objArray);
         }
