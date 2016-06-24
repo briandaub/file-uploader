@@ -27,20 +27,20 @@ function scanForSequences(event) {
             //Alert user the file upload has succeeded
             alert('File ' + file.name + ' has been uploaded!');
             
-            for(var i = 0; i < contentsByLine.length; i++){
-                if(contentsByLine[i].charAt(i) == '>'){
-                    obj.id = contentsByLine[i];
-                }else{
-                    sequenceArray.push(contentsByLine[i]);
-                    obj.sequence = sequenceArray;
-                    obj.lead_trim = 0;
-                    obj.trail_trim = 0;
+            for(var i in contentsByLine){
+                sequenceArray.push(contentsByLine[i]);
+                for(var j in sequenceArray){
+                    if(sequenceArray[j].charAt(0) == '>'){
+                        obj.id = sequenceArray[j];
+                    }else{
+                        obj.sequence = sequenceArray[j];
+                        obj.lead_trim = 0;
+                        obj.trail_trim = 0;
+                    }
+                    objArray.push(obj);
                 }
-                objArray.push({obj});
-                console.log(objArray);
-                //console.log(sequenceArray[i].length);
-            }
-            
+            } 
+            console.log(objArray);
         }
         reader.readAsText(file);
     } else {
