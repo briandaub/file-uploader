@@ -25,8 +25,8 @@ classes should alter those!
   overflow: hidden;
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
-  height: 16px;
-  line-height: 16px;
+  height: 16px; /* 16 px */
+  line-height: 16px; /* 16 px */
   margin: 0;
   padding: 4px;
   border-right: 1px solid silver;
@@ -89,9 +89,9 @@ classes should alter those!
 
 .slick-cell, .slick-headerrow-column {
   position: absolute;
-  border: 1px solid transparent;
+  /*border: 1px solid transparent;
   border-right: 1px dotted silver;
-  border-bottom-color: silver;
+  border-bottom-color: silver;*/
   overflow: hidden;
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
@@ -99,8 +99,9 @@ classes should alter those!
   z-index: 1;
   padding: 1px 2px 2px 1px;
   margin: 0;
-  white-space: nowrap;
+  white-space: wrap;
   cursor: default;
+  word-wrap: break-word;
 }
 
 .slick-group {

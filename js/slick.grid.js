@@ -56,12 +56,12 @@ if (typeof Slick === "undefined") {
     // settings
     var defaults = {
       explicitInitialization: false,
-      rowHeight: 25,
+      rowHeight: 200,
       defaultColumnWidth: 80,
       enableAddRow: false,
       leaveSpaceForNewRows: false,
       editable: false,
-      autoEdit: true,
+      autoEdit: false,
       enableCellNavigation: true,
       enableColumnReorder: true,
       asyncEditorLoading: false,
@@ -71,7 +71,7 @@ if (typeof Slick === "undefined") {
       asyncPostRenderDelay: 50,
       enableAsyncPostRenderCleanup: false,
       asyncPostRenderCleanupDelay: 40,
-      autoHeight: false,
+      autoHeight: true,
       editorLock: Slick.GlobalEditorLock,
       showHeaderRow: false,
       headerRowHeight: 25,

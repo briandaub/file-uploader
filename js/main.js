@@ -19,7 +19,7 @@ function parse(event) {
         //When the file reader loads
         reader.onload = function(evt) {
             //Add the contents of file to variable contents
-            var contentsByLine = evt.target.result.split('\n');
+            var contentsByLine = evt.target.result.split('\n'); 
             //Alert user the file upload has succeeded
             alert('File ' + file.name + ' has been uploaded!');
 
@@ -33,7 +33,7 @@ function parse(event) {
                     };
                     objArray.push(obj);
                 }else{
-                    obj.sequence.push(contentsByLine[i]);
+                    obj.sequence.push(contentsByLine[i].toString());
                 }
             }
             //console.log(objArray);
