@@ -37,44 +37,45 @@ function parse(event) {
                 }
             }
             //console.log(objArray);
+            // Create the DataView.
+            var dataView = new Slick.Data.DataView();
+
+            // Pass it as a data provider to SlickGrid.
+            var grid = new Slick.Grid("#table", dataView, columns, options);
+
+            // Make the grid respond to DataView change events.
+            dataView.onRowCountChanged.subscribe(function (e, args) {
+              grid.updateRowCount();
+              grid.render();
+            });
+
+            dataView.onRowsChanged.subscribe(function (e, args) {
+              grid.invalidateRows(args.rows);
+              grid.render();
+            });
+
+
+            //console.log(objArray);
+            
+            var data = [];
+            
+            for (var i in objArray){
+                data.push(objArray[i]);
+            }
+            console.log(data);
+            /*var data = [
+              {'id': objArray[0], 'lang': 'Java', 'year': 1995},
+              {'id': objArray[1], 'lang': 'JavaScript', 'year': 1995},
+            ];*/
+
+            dataView.setItems(data);
+            dataView.getItems();
         }
         reader.readAsText(file);
     } else {
         alert('Failed to upload file!');
     }
-    
-    
-    // Create the DataView.
-    var dataView = new Slick.Data.DataView();
-    
-    // Pass it as a data provider to SlickGrid.
-    var grid = new Slick.Grid("#table", dataView, columns, options);
 
-    // Make the grid respond to DataView change events.
-    dataView.onRowCountChanged.subscribe(function (e, args) {
-      grid.updateRowCount();
-      grid.render();
-    });
-
-    dataView.onRowsChanged.subscribe(function (e, args) {
-      grid.invalidateRows(args.rows);
-      grid.render();
-    });
-
-    var data = [];
-    for(var i = 0; i < objArray.length; i++){
-        data[i] = {
-            sel: i,
-            sequence: "some info",
-            lead_trim: 0,
-            trail_trim: 0
-        };
-    }
-    
-    dataView.setItems(data);
-    
-    console.log(objArray.length);
-    
 }
     
 document.getElementById('fileItem').addEventListener('change', parse, false);
