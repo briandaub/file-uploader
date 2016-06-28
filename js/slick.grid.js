@@ -56,7 +56,7 @@ if (typeof Slick === "undefined") {
     // settings
     var defaults = {
       explicitInitialization: false,
-      rowHeight: 200,
+      rowHeight: 180,
       defaultColumnWidth: 80,
       enableAddRow: false,
       leaveSpaceForNewRows: false,
@@ -237,7 +237,7 @@ if (typeof Slick === "undefined") {
 
       $container
           .empty()
-          .css("overflow", "hidden")
+          .css("overflow", "auto")
           .css("outline", 0)
           .addClass(uid)
           .addClass("ui-widget");

@@ -35,7 +35,9 @@ function parse(event) {
                 }else{
                     obj.sequence.push(contentsByLine[i]);
                 }
+               // console.log(objArray[i]['sequence']);
             }
+            
 
             // Create the DataView.
             var dataView = new Slick.Data.DataView();
@@ -56,13 +58,13 @@ function parse(event) {
             
             var data = [];
             
-            for (var i in objArray){
+            for (var i in objArray){;
                 data.push(objArray[i]);
             }
 
             dataView.setItems(data);
             dataView.getItems();
-            console.log(data);
+            //console.log(data);
         }
         reader.readAsText(file);
     } else {
@@ -72,5 +74,7 @@ function parse(event) {
 }
     
 document.getElementById('fileItem').addEventListener('change', parse, false);
+
+
 
  
