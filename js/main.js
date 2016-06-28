@@ -21,7 +21,7 @@ function parse(event) {
             //Add the contents of file to variable contents
             var contentsByLine = evt.target.result.split('\n'); 
             //Alert user the file upload has succeeded
-            alert('File ' + file.name + ' has been uploaded!');
+            console.log('File ' + file.name + ' was successfully loaded.');
 
             for(var i in contentsByLine){
                 if(contentsByLine[i][0] == '>'){
@@ -33,10 +33,10 @@ function parse(event) {
                     };
                     objArray.push(obj);
                 }else{
-                    obj.sequence.push(contentsByLine[i].toString());
+                    obj.sequence.push(contentsByLine[i]);
                 }
             }
-            //console.log(objArray);
+
             // Create the DataView.
             var dataView = new Slick.Data.DataView();
 
@@ -53,23 +53,16 @@ function parse(event) {
               grid.invalidateRows(args.rows);
               grid.render();
             });
-
-
-            //console.log(objArray);
             
             var data = [];
             
             for (var i in objArray){
                 data.push(objArray[i]);
             }
-            console.log(data);
-            /*var data = [
-              {'id': objArray[0], 'lang': 'Java', 'year': 1995},
-              {'id': objArray[1], 'lang': 'JavaScript', 'year': 1995},
-            ];*/
 
             dataView.setItems(data);
             dataView.getItems();
+            console.log(data);
         }
         reader.readAsText(file);
     } else {
