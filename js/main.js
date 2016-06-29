@@ -27,17 +27,17 @@ function parse(event) {
                 if(contentsByLine[i][0] == '>'){
                     obj = {
                         id: contentsByLine[i],
-                        sequence: [],
+                        sequenceArray: [],
                         lead_trim: 0,
                         trail_trim: 0
                     };
                     objArray.push(obj);
                 }else{
-                    obj.sequence.push(contentsByLine[i]);
+                    obj.sequenceArray.push(contentsByLine[i]);
                 }
                // console.log(objArray[i]['sequence']);
             }
-            
+            console.log(objArray)
 
             // Create the DataView.
             var dataView = new Slick.Data.DataView();
@@ -57,8 +57,10 @@ function parse(event) {
             });
             
             var data = [];
+            var result;
             
-            for (var i in objArray){;
+            for (var i = 0; i < objArray.length; i++) {
+                objArray[i]['sequence'] = objArray[i]['id'] + '\n' + objArray[i]['sequenceArray'].join('');
                 data.push(objArray[i]);
             }
 
