@@ -66,7 +66,7 @@ if (typeof Slick === "undefined") {
       enableColumnReorder: true,
       asyncEditorLoading: false,
       asyncEditorLoadDelay: 100,
-      forceFitColumns: false,
+      forceFitColumns: true,
       enableAsyncPostRender: false,
       asyncPostRenderDelay: 50,
       enableAsyncPostRenderCleanup: false,
@@ -270,7 +270,7 @@ if (typeof Slick === "undefined") {
         $headerRowScroller.hide();
       }
 
-      $viewport = $("<div class='slick-viewport' style='width:100%;overflow:auto;outline:0;position:relative;;'>").appendTo($container);
+      $viewport = $("<div class='slick-viewport' style='width:100%;overflow:hidden;outline:0;position:relative;;'>").appendTo($container);
       $viewport.css("overflow-y", options.autoHeight ? "hidden" : "auto");
 
       $canvas = $("<div class='grid-canvas' />").appendTo($viewport);
