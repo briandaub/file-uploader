@@ -237,7 +237,7 @@ if (typeof Slick === "undefined") {
 
       $container
           .empty()
-          .css("overflow", "scroll")
+          .css("overflow", "hidden")
           .css("outline", 0)
           .addClass(uid)
           .addClass("ui-widget");
@@ -270,8 +270,8 @@ if (typeof Slick === "undefined") {
         $headerRowScroller.hide();
       }
 
-      $viewport = $("<div class='slick-viewport' style='width:100%;overflow:hidden;outline:0;position:relative;;'>").appendTo($container);
-      $viewport.css("overflow", options.autoHeight ? "hidden" : "auto");
+      $viewport = $("<div class='slick-viewport' style='width:100%;overflow:hidden;outline:0;position:relative;'>").appendTo($container);
+      $viewport.css("overflow-y", options.autoHeight ? "hidden" : "auto");
 
       $canvas = $("<div class='grid-canvas' />").appendTo($viewport);
 
