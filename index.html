@@ -54,6 +54,13 @@
         <script src="controls/slick.columnpicker.js"></script>
         <script src="js/slick.custom.js"></script>
         <script src="js/main.js"></script>
+        <script type="text/html" id="cell_template">
+            <div class="cell-inner">
+                <div class="cell-main">
+                    <%=ID%>
+                </div>
+            </div>
+        </script>
         <script>
             var grid;
             var columns = [
@@ -74,7 +81,7 @@
         </script>
         <script>
           $(function() {
-            $( ".resizable" ).resizable({ alsoResize: "#table" });
+            $( ".resizable" ).resizable();
           });
         </script>
         <!-- Latest compiled and minified JavaScript -->

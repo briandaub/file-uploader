@@ -83,6 +83,15 @@ textarea {
     width:1280px!important;
 }
 
+.slick-cell.editable {
+    border: 1px solid black!important;
+}
+
+.slick-cell > input[type=text] {
+    height: 100%;
+    width: 100%;
+}
+
 
 /* ==========================================================================
    Media Queries
