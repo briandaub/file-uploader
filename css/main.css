@@ -58,7 +58,7 @@ textarea {
 
 .container {
     width: 90%;
-    max-width: 1280px;
+    max-width: 1124px;
     margin: 0 auto;
 }
 
@@ -83,13 +83,25 @@ textarea {
     width:1280px!important;
 }
 
-.slick-cell.editable {
-    border: 1px solid black!important;
+.slick-cell {
+    padding: 0px 0px 2px 0px;
 }
 
 .slick-cell > input[type=text] {
     height: 100%;
     width: 100%;
+}
+
+.cell-main > textarea {
+    height: 180px;
+    min-height: 100%;
+    width: 100%;
+    word-wrap: break-word;
+    overflow: hidden;
+    resize: none;
+    margin: 0;
+    padding: 0;
+    border: none;
 }
 
 
