@@ -107,18 +107,19 @@ textarea {
 }
 
 .cell-main  span > input[type=text] {
-    height: 180px;
-    min-height: 100%;
-    width: 12%;
-    word-wrap: break-word;
-    overflow: hidden;
+    height: 25px;
+    width: 10%;
     resize: none;
-    margin: 0;
-    padding-left: 5px;
+    padding-left: 50px;
     border: none;
     position: relative;
     top: -140px;
-    vertical-align: middle;
+}
+
+.cell-main  span > label {
+    position: relative;
+    top: -165px;
+    line-height: 12px;
 }
 
 

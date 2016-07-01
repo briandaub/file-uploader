@@ -71,8 +71,8 @@ function parse(event) {
             var columns = [
               /*{id: "id", name: "ID", field: "id", behavior: "select", cssClass: "cell-selection", width: 100, cannotTriggerInsert: true, resizable: false, selectable: false },*/
               {id: "sequence", name: "Sequence", field: "sequence", width: 1124, minWidth: 680, cssClass: "cell-title", formatter: renderCell, /*validator: requiredFieldValidator,*/ sortable: false},
-              /*{id: "lead_trim", name: "Leading Trim", field: "Leading Trim", width: 150, minWidth: 150, editor: Slick.Editors.Text, sortable: false},
-              {id: "trail_trim", name: "Trailing Trim", field: "Trailing Trim", width: 150, minWidth: 150, editor: Slick.Editors.Text, sortable: false}*/
+              {id: "lead_trim", name: "Leading Trim", field: "Leading Trim", width: 150, minWidth: 150, editor: Slick.Editors.Text, sortable: false},
+              {id: "trail_trim", name: "Trailing Trim", field: "Trailing Trim", width: 150, minWidth: 150, editor: Slick.Editors.Text, sortable: false}``
             ];
 
             var options = {
