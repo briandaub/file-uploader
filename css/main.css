@@ -68,6 +68,7 @@ textarea {
     margin: 0;
     padding: 0;
     overflow: scroll!important;
+    border-left: 1px solid silver;
 }
 
 .resizable {
@@ -85,6 +86,7 @@ textarea {
 
 .slick-cell {
     padding: 0px 0px 2px 0px;
+    border-right: 1px solid silver;
 }
 
 .slick-cell > input[type=text] {
@@ -92,16 +94,31 @@ textarea {
     width: 100%;
 }
 
-.cell-main > textarea {
+.cell-main  span > textarea {
     height: 180px;
     min-height: 100%;
-    width: 100%;
+    width: 72%;
     word-wrap: break-word;
     overflow: hidden;
     resize: none;
     margin: 0;
-    padding: 0;
+    padding-left: 5px;
     border: none;
+}
+
+.cell-main  span > input[type=text] {
+    height: 180px;
+    min-height: 100%;
+    width: 12%;
+    word-wrap: break-word;
+    overflow: hidden;
+    resize: none;
+    margin: 0;
+    padding-left: 5px;
+    border: none;
+    position: relative;
+    top: -140px;
+    vertical-align: middle;
 }
 
 
