@@ -67,6 +67,22 @@ function parse(event) {
                   return data ? fn(data) : fn;
                 };
             })();
+            
+            var columns = [
+              /*{id: "id", name: "ID", field: "id", behavior: "select", cssClass: "cell-selection", width: 100, cannotTriggerInsert: true, resizable: false, selectable: false },*/
+              {id: "sequence", name: "Sequence", field: "sequence", width: 1124, minWidth: 680, cssClass: "cell-title", formatter: renderCell, /*validator: requiredFieldValidator,*/ sortable: false},
+              /*{id: "lead_trim", name: "Leading Trim", field: "Leading Trim", width: 150, minWidth: 150, editor: Slick.Editors.Text, sortable: false},
+              {id: "trail_trim", name: "Trailing Trim", field: "Trailing Trim", width: 150, minWidth: 150, editor: Slick.Editors.Text, sortable: false}*/
+            ];
+
+            var options = {
+              editable: true,
+              enableAddRow: false,
+              enableCellNavigation: true,
+              asyncEditorLoading: true,
+              forceFitColumns: false,
+              topPanelHeight: 45
+            }; 
 
             // Create the DataView.
             var dataView = new Slick.Data.DataView();
@@ -86,16 +102,25 @@ function parse(event) {
             });
             
             var data = [];
-            var result;
+            
+            var compiled_template = tmpl("cell_template");
+            
+            function renderCell(row, cell, value, columnDef, dataContext) {
+                return compiled_template(dataContext);
+            }
             
             for (var i = 0; i < objArray.length; i++) {
+                var d = (data[i] = {});
                 objArray[i]['sequence'] = objArray[i]['id'] + '\n' + objArray[i]['sequenceArray'].join('\n');
-                data.push(objArray[i]);
+                
+                d['id'] = objArray[i]['id'];
+                d['sequence'] = '<textarea>' + objArray[i]['sequence'] + '</textarea>';
+                d['lead_trim'] = '<input type="text" id="lead_trim" value="0">';
+                d['trail_trim'] = '<input type="text" id="trail_trim" value="0">'; 
             }
 
             dataView.setItems(data);
             dataView.getItems();
-            //console.log(data);
         }
         reader.readAsText(file);
     } else {

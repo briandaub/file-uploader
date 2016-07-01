@@ -54,30 +54,19 @@
         <script src="controls/slick.columnpicker.js"></script>
         <script src="js/slick.custom.js"></script>
         <script src="js/main.js"></script>
+        <script>
+
+        </script>
         <script type="text/html" id="cell_template">
             <div class="cell-inner">
                 <div class="cell-main">
-                    <%=ID%>
+                    <span>
+                        <%=sequence%>
+                        <%=lead_trim%>
+                        <%=trail_trim%>
+                    </span>
                 </div>
             </div>
-        </script>
-        <script>
-            var grid;
-            var columns = [
-              {id: "id", name: "ID", field: "id", behavior: "select", cssClass: "cell-selection", width: 100, cannotTriggerInsert: true, resizable: false, selectable: false },
-              {id: "sequence", name: "Sequence", field: "sequence", width: 750, minWidth: 680, cssClass: "cell-title", editor: Slick.Editors.Text, /*validator: requiredFieldValidator,*/ sortable: true},
-              {id: "lead_trim", name: "Leading Trim", field: "Leading Trim", width: 150, minWidth: 150, editor: Slick.Editors.Text, sortable: true},
-              {id: "trail_trim", name: "Trailing Trim", field: "Trailing Trim", width: 150, minWidth: 150, editor: Slick.Editors.Text, sortable: true},
-            ];
-
-            var options = {
-              editable: true,
-              enableAddRow: false,
-              enableCellNavigation: true,
-              asyncEditorLoading: true,
-              forceFitColumns: false,
-              topPanelHeight: 45
-            }; 
         </script>
         <script>
           $(function() {
